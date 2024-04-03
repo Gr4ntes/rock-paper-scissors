@@ -36,8 +36,6 @@ const outcomes = {
 };
 
 function playRound(playerSelection, computerSelection) {
-    // making playerSelection case-insensitive 
-    playerSelection = playerSelection.toLowerCase();
     
     // checking for outcome
     if (outcomes[playerSelection][computerSelection] === "win")
@@ -48,8 +46,34 @@ function playRound(playerSelection, computerSelection) {
         return "It's a draw.";
 }
 
+function playGame() {
 
-// come temporary tests
-const playerSelection = "rock";
-const computerSelection = getComputerChoice();
-console.log(playRound(playerSelection, computerSelection));
+    let playerSelection;
+    let keepPlaying;
+
+    while(true) {
+        while (true) {
+        playerSelection = prompt("Enter your choice (rock, paper, or scissors): ");
+        // making playerSelection case-insensitive 
+        playerSelection = playerSelection.toLowerCase();
+        //checking if the input is legit
+        if (playerSelection != "rock" && playerSelection != "paper" && playerSelection != "scissors")
+            console.log("Invalid input! Try again.");
+        else 
+            break;
+        }
+
+        // getting computer choice
+        const computerSelection = getComputerChoice();
+        // checking and printing the result
+        console.log(playRound(playerSelection, computerSelection));
+
+        //asking the user whether he wants to continue playing
+        keepPlaying = prompt("Keep Playing? (yes/no)", "yes");
+        if (keepPlaying === "no")
+            break;
+    }  
+}
+
+//running the game
+playGame()
