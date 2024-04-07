@@ -28,3 +28,7 @@ body {
     font-size: 16px;
     background-color: rgb(237, 220, 37);
 }
+
+#result {
+    text-align: center;
+}

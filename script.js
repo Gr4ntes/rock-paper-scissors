@@ -8,7 +8,6 @@ function choiceToString(choice) {
         return 'scissors'; // 3 is used for Scissors
 }
 
-
 function getComputerChoice() {
     // getting a random number
     const random = Math.floor(Math.random() * 3) + 1;
@@ -38,42 +37,22 @@ const outcomes = {
 function playRound(playerSelection, computerSelection) {
     
     // checking for outcome
+    playerSelection = playerSelection.slice(0, playerSelection.length-1).toLowerCase();
     if (outcomes[playerSelection][computerSelection] === "win")
         return "You win! " + playerSelection + " beats " + computerSelection;
     else if (outcomes[playerSelection][computerSelection] === "lose")
         return "You lose! " + computerSelection + " beats " + playerSelection;
     else
-        return "It's a draw.";
+        return "It's a draw";
 }
 
-function playGame() {
+const buttons = document.querySelectorAll(".selection-btn");
+const result = document.querySelector("#result");
 
-    let playerSelection;
-    let keepPlaying;
-
-    while(true) {
-        while (true) {
-        playerSelection = prompt("Enter your choice (rock, paper, or scissors): ");
-        // making playerSelection case-insensitive 
-        playerSelection = playerSelection.toLowerCase();
-        //checking if the input is legit
-        if (playerSelection != "rock" && playerSelection != "paper" && playerSelection != "scissors")
-            console.log("Invalid input! Try again.");
-        else 
-            break;
-        }
-
-        // getting computer choice
-        const computerSelection = getComputerChoice();
-        // checking and printing the result
-        console.log(playRound(playerSelection, computerSelection));
-
-        //asking the user whether he wants to continue playing
-        keepPlaying = prompt("Keep Playing? (yes/no)", "yes");
-        if (keepPlaying === "no")
-            break;
-    }  
-}
-
-//running the game
-//playGame()
+buttons.forEach((button) => {
+    button.addEventListener("click", () => {
+        let computerSelection = getComputerChoice();
+        playerSelection = button.innerText;
+        result.textContent = playRound(playerSelection, computerSelection);
+    });
+});
