@@ -1,0 +1,30 @@
+body {
+    font-family: "Chalkboard", cursive;
+    background-color: rgb(145, 35, 204);
+    color: white;
+}
+
+#heading-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#btn-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.selection-btn {
+    width: 120px;
+    height: 60px;
+    padding: 5px;
+    color:blueviolet;
+    border-color: white;
+    border-radius: 8px;
+    font-family: "Chalkboard", cursive;
+    font-size: 16px;
+    background-color: rgb(237, 220, 37);
+}

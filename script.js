@@ -76,4 +76,4 @@ function playGame() {
 }
 
 //running the game
-playGame()
+//playGame()
